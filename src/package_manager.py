@@ -42,7 +42,7 @@ class PackageManager:
 			return False
 		
 	
-	def install_package(self, packages: List[str], skip_installed: bool = True) -> None:
+	def install_packages(self, packages: List[str], skip_installed: bool = True) -> None:
 		"""
 		Устанавливает список пакетов.
 		:param packages: Список имен пакетов.

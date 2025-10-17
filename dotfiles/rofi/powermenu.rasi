@@ -1,11 +1,11 @@
 configuration {
-	display-drun: "";
+	display-drun: "";
 	display-clipboard: "";
 	drun-display-format: "{name}";
 	modi: "drun";
 }
 
-@import "~/.config/rofi/colors.rasi"
+@import "~/.config/bspwm/themes/bspwm_otto/rofi/colors.rasi"
 
 * {
 	font: "JetbrainsMono 10";
@@ -20,19 +20,19 @@ configuration {
 }
 
 window {
-	width: 400px;
-	height: 500px;
+	width: 170px;
+	height: 150px;
 	border-radius: 0;
 	border: 0;
 	padding: 10;
 	background-color: @bg;
-	x-offset:   -750px;
-	y-offset:   -240px;
+	x-offset:   865px;
+	y-offset:   -415px;
 }
 
 mainbox {
 	background-color: @bg;
-	children: [inputbar,listview];
+	children: [listview];
 	padding: 0;
 }
 
@@ -49,24 +49,25 @@ listview {
 inputbar {
 	children: [prompt, entry];
 	background-color: @gr;
-	border-radius: 10;
-	margin: 10 0 10 0;
+	border-radius: 0;
+	margin: 0;
 }
 
 prompt {
+	enabled: false;
 	font: "Symbols Nerd Font 10";
 	background-color: @gr;
-	text-color: @bg;
+	text-color: @gr2;
 	enabled: true;
 	border-radius: 0;
-	padding: 5 10 0 10;
+	padding: 0;
 
 }
 
 entry {
 	background-color: transparent;
-	text-color: @bg;
-	placeholder-color: @fg;
+	text-color: @fg;
+	placeholder-color: @gr2;
 	border-radius: 0;
 	placeholder: "Search...";
 	blink: false;
@@ -106,16 +107,16 @@ element.normal.active {
 	text-color: @fg;
 }
 element.selected.normal {
-	background-color: @green;
-	text-color: @bg;
+	background-color: @gr;
+	text-color: @green;
 }
 element.selected.urgent {
-	background-color: @green;
-	text-color: @bg;
+	background-color: @gr;
+	text-color: @green;
 }
 element.selected.active {
-	background-color: @blue;
-	text-color: @bg;
+	background-color: @gr;
+	text-color: @green;
 }
 element.alternate.normal {
 	background-color: @bg;

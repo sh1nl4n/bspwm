@@ -1,46 +1,49 @@
 import os
 import shutil
-import subprocess
 from pathlib import Path
-from typing import Dict, List
-
+from typing import Dict
 
 class DotfileManager:
     def __init__(self, dotfiles_dir: str = "./dotfiles"):
         """
-        :param dotfiles_dir: Путь к папке с исходными конфигами (относительно скрипта или абсолютный)
+        :param dotfiles_dir: Путь к папке с исходными конфигами
         """
-
         self.dotfiles_dir = Path(dotfiles_dir).resolve()
         if not self.dotfiles_dir.exists():
-            raise  FileNotFoundError(f"Папка с конфигами не найдена: {self.dotfiles_dir}")
+            raise FileNotFoundError(f"Папка с конфигами не найдена: {self.dotfiles_dir}")
 
 
-    def _ensure_dir(self, target_dir: Path):
-        """Создает родительскую директорию, если ее нет"""
-
-        target_dir.mkdir(parents=True, exist_ok=True)
-
-
-    def symlink_file(self, source: Path, target: Path):
-        """Создает симолическую ссылку (перезаписывает, если существует)"""
-
-        if target.exists() or target.is_symlink():
-            if target.is_symlink():
-                target.unlink()
+    def _backup_if_exists(self, target: Path):
+        """Создаёт резервную копию существующего файла/папки."""
+        if target.exists():
+            backup = target.with_suffix(target.suffix + ".bak")
+            if backup.exists():
+                shutil.rmtree(backup) if backup.is_dir() else backup.unlink()
+            if target.is_dir():
+                shutil.copytree(target, backup)
             else:
-                backup = target.with_suffix(target.suffix + ".bak")
-                shutil.move(str(target), str(backup))
-                print(f"⚠️  Существующий файл сохранён как: {backup}")
+                shutil.copy2(target, backup)
+            print(f"⚠️  Существующий файл/папка сохранены как: {backup}")
 
-        self._ensure_dir(target.parent)
-        target.symlink_to(source)
-        print(f"🔗 Создана ссылка: {target} → {source}")
+
+    def _copy_file_or_dir(self, source: Path, target: Path):
+        """Копирует файл или директорию в целевое место."""
+        self._backup_if_exists(target)
+
+        target.parent.mkdir(parents=True, exist_ok=True)
+
+        if source.is_dir():
+            shutil.copytree(source, target)
+            print(f"📁 Скопирована папка: {target}")
+        else:
+            shutil.copy2(source, target)
+            print(f"📄 Скопирован файл: {target}")
+
 
     def deploy_configs(self, config_map: Dict[str, str]):
         """
-        Разворачивает конфиги по заданной карте.
-        :param config_map: { "путь_в_dotfiles": "$XDG_CONFIG_HOME/..." или "~/.имя" }
+        Копирует конфиги из dotfiles_dir в целевые пути.
+        :param config_map: {"путь_в_dotfiles": "~/.config/..."}
         """
         for rel_source, rel_target in config_map.items():
             source = self.dotfiles_dir / rel_source
@@ -48,13 +51,6 @@ class DotfileManager:
                 print(f"❌ Пропущен: {source} (не существует)")
                 continue
 
-            target = os.path.expandvars(os.path.expanduser(rel_target))
-            target_path = Path(target)
+            target = Path(os.path.expandvars(os.path.expanduser(rel_target)))
 
-            if source.is_dir():
-                if target_path.exists():
-                    shutil.rmtree(target_path)
-                shutil.copytree(source, target_path)
-                print(f"📁 Скопирована папка: {target_path}")
-            else:
-                self.symlink_file(source, target_path)
+            self._copy_file_or_dir(source, target)

@@ -11,6 +11,7 @@ class Packages:
 		"xorg-xkill",						# Принудительное закрытие зависших окон
 		"libinput-gestures",		# Жесты 
 		"xf86-input-libinput",  # Современный драйвер ввода для клавиатуры, тачпадов
+		"alacritty"
 	]
 
 
