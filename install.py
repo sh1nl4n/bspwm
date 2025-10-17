@@ -69,7 +69,10 @@ CONFIG_MAP = {
     "pictures/": "~/Pictures/",
     "bin/": "~/bin/",
     "autorandr/postswitch": "~/.config/autorandr/postswitch",
-    "etc/logind.conf": "/etc/systemd/logind.conf"
+    "etc/logind.conf": "/etc/systemd/logind.conf",
+    "etc/00-keyboard.conf": "/etc/X11/xorg.conf.d/00-keyboard.conf",
+    "etc/50-touchpad.conf": "/etc/X11/xorg.conf.d/50-touchpad.conf",
+    "micro/colorschemes/": "~/.config/micro/colorschemes/"
 }
 
 dm.deploy_configs(CONFIG_MAP)
@@ -78,6 +81,8 @@ dm.deploy_configs(CONFIG_MAP)
 
 # === 3. Пост-установка: права и инициализация ===
 print("\n🔧 Пост-установка...")
+
+subprocess.run(["sudo", "usermod", "-aG", "docker", "$USER"], stdout=subprocess.DEVNULL, check=True)
 
 executables = [
     "~/.config/bspwm/bspwmrc",

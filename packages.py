@@ -24,7 +24,8 @@ class Packages:
 		"rofi",									# Меню запуска
 		"rofi-calc",						# Калькулятор внутри rofi
 		"cliphist",							# История буфера обмена
-		"xclip"									# Классический инструмент для работы с буфером в X11
+		"xclip",								# Классический инструмент для работы с буфером в X11
+		"lxappearance"
 	]
 
 
@@ -172,6 +173,8 @@ class Packages:
 		"octopi",               # GUI для pacman (менеджер пакетов)
 		"paru-bin",                 # AUR-хелпер (альтернатива yay)
 		"yay-bin",              # Ещё один популярный AUR-хелпер
+		"nodejs",
+		"npm"
 	]
 
 
