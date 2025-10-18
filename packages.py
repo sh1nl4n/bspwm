@@ -174,7 +174,8 @@ class Packages:
 		"paru-bin",                 # AUR-хелпер (альтернатива yay)
 		"yay-bin",              # Ещё один популярный AUR-хелпер
 		"nodejs",
-		"npm"
+		"npm",
+		"gpick"
 	]
 
 

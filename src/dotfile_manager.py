@@ -24,6 +24,10 @@ class DotfileManager:
             else:
                 shutil.copy2(target, backup)
             print(f"⚠️  Существующий файл/папка сохранены как: {backup}")
+            if target.is_dir():
+                shutil.rmtree(target)
+            else:
+                target.unlink()
 
 
     def _copy_file_or_dir(self, source: Path, target: Path):

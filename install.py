@@ -41,16 +41,13 @@ CONFIG_MAP = {
 
 
     # Панель и уведомления
-    "polybar/config.ini": "~/.config/polybar/config.ini",
-    "polybar/launch.sh": "~/.config/polybar/launch.sh",
+    "polybar/": "~/.config/polybar/",
     "dunst/dunstrc": "~/.config/dunst/dunstrc",
     "picom/picom.conf": "~/.config/picom/picom.conf",
 
 
     # Rofi
-    "rofi/config.rasi": "~/.config/rofi/config.rasi",
-    "rofi/powermenu.rasi": "~/.config/rofi/powermenu.rasi",
-    "rofi/colors.rasi": "~/.config/rofi/colors.rasi",
+    "rofi/": "~/.config/rofi/",
 
 
     # X11
@@ -59,20 +56,26 @@ CONFIG_MAP = {
 
     # GTK / темы
     "gtk-3.0/settings.ini": "~/.config/gtk-3.0/settings.ini",
-    "lxappearance/lxappearance.conf": "~/.config/lxappearance/lxappearance.conf",
 
 
     # Betterlockscreen
     "betterlockscreen/betterlockscreenrc": "~/.config/betterlockscreen/betterlockscreenrc",
 
+
+    # Themes
+    "fonts/": "~/.local/share/fonts/local/",
+    "themes/": "~/.themes/",
+    "icons/": "~/.icons/",
+
     # Other
     "pictures/": "~/Pictures/",
     "bin/": "~/bin/",
-    "autorandr/postswitch": "~/.config/autorandr/postswitch",
+    "autorandr": "~/.config/autorandr",
     "etc/logind.conf": "/etc/systemd/logind.conf",
-    "etc/00-keyboard.conf": "/etc/X11/xorg.conf.d/00-keyboard.conf",
-    "etc/50-touchpad.conf": "/etc/X11/xorg.conf.d/50-touchpad.conf",
-    "micro/colorschemes/": "~/.config/micro/colorschemes/"
+    "x11/00-keyboard.conf": "/etc/X11/xorg.conf.d/00-keyboard.conf",
+    "x11/50-touchpad.conf": "/etc/X11/xorg.conf.d/50-touchpad.conf",
+    "micro/": "~/.config/micro/",
+    "alacritty/": "~/.config/alacritty/"
 }
 
 dm.deploy_configs(CONFIG_MAP)
@@ -90,7 +93,8 @@ executables = [
     "~/.config/polybar/launch.sh",
     "~/.config/autorandr/postswitch",
     "~/.xinitrc",
-    "~/bin/lock_screen.sh"
+    "~/bin/lock_screen.sh",
+    "~/bin/color_pick.sh",
 ]
 
 for path_str in executables:
