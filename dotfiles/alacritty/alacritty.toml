@@ -1,6 +1,6 @@
 [font]
 builtin_box_drawing = true
-size = 17.0
+size = 10.0
 
 [font.bold]
 style = "Bold"
@@ -12,7 +12,7 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "IBM Plex Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

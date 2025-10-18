@@ -4,24 +4,21 @@ super + Return
 super + d
 	rofi -show drun -theme .config/rofi/config.rasi -show-icons
 
-super + Escape
-	pkill -USR1 -x sxhkd
-
 super + n
-	nemo
+	nautilus
 
 @Print
 	flameshot gui
 
 super + l
-	dm-tool lock
+	~/bin/lock_screen.sh
 
 super + c
-	~/bin/color-pick
+	~/bin/color_pick.sh
 
 #ПЕРЕЗАГРУЗИТЬ КОНФИГ SXHKD
-super + e
-        pkill -USR1 -x sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd
 
 #ВЫЙТИ/ПЕРЕЗАГРУЗИТЬ BSPWM
 super + shift + {e,r}
@@ -50,7 +47,7 @@ super + alt + space
 
 #ПЕРЕКЛЮЧИТСЯ НА ВОРКСПЕЙС ИЛИ ПЕРЕТАЩИТЬ НА НЕГО АКТИВНОЕ ОКНО
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '{1-9,10}'
 
 #ЗАКРЫТЬ ОКНО ИЛИ УБИТЬ ЕГО
 super + q
@@ -80,10 +77,10 @@ ctrl + shift + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 XF86MonBrightnessDown
-	brightnessctl set 10-
+	brightnessctl set 10%-
 
 XF86MonBrightnessUp
-	brightnessctl set +10
+	brightnessctl set +10%
 
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +5%

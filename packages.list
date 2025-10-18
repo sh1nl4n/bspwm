@@ -23,6 +23,7 @@ cliphist
 xclip
 lxappearance
 autorandr
+arandr
 
 
 # Sessions
@@ -91,6 +92,8 @@ ttf-liberation
 ttf-opensans
 otf-font-awesome
 woff2-font-awesome
+ttf-jetbrains-mono-nerd
+material-icon-theme-git
 
 
 # System

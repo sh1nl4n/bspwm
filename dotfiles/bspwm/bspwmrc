@@ -14,47 +14,39 @@ bspc config single_monocle	     true
 bspc config borderless_monocle   true
 bspc config gapless_monocle      false
 bspc config paddingless_monocle	 true
+bspc config top_padding 0
 
 
-# Получаем список подключенных мониторов
-# --- Обнаружение мониторов через xrandr ---
-# Получаем список активных (подключённых и включённых) мониторов
-mapfile -t MONITORS < <(xrandr --query | grep " connected" | grep -v " disconnected" | cut -d' ' -f1)
+mapfile -t MONITORS < <(xrandr --query | awk '/ connected/ && !/disconnected/ {print $1}')
+
+PRIMARY=$(xrandr --query | awk '/ primary/ {print $1; exit}')
 
 NUM_MONITORS=${#MONITORS[@]}
 
-# --- Назначение рабочих столов ---
 if [ "$NUM_MONITORS" -eq 1 ]; then
-    # Один монитор → 5 столов
     bspc monitor "${MONITORS[0]}" -d 1 2 3 4 5
 
 elif [ "$NUM_MONITORS" -eq 2 ]; then
-    # Два монитора:
-    # Первый — primary (по умолчанию у xrandr), второй — secondary
-    PRIMARY="${MONITORS[0]}"
-    SECONDARY="${MONITORS[1]}"
-
-    # Проверим, есть ли явно заданный primary через xrandr --primary
-    PRIMARY_CANDIDATE=$(xrandr --query | grep " primary" | head -n1 | cut -d' ' -f1)
-    if [ -n "$PRIMARY_CANDIDATE" ]; then
-        PRIMARY="$PRIMARY_CANDIDATE"
-        # Определим secondary как оставшийся
-        if [ "${MONITORS[0]}" = "$PRIMARY" ]; then
-            SECONDARY="${MONITORS[1]}"
-        else
-            SECONDARY="${MONITORS[0]}"
-        fi
+    if [ -n "$PRIMARY" ]; then
+        SECONDARY=""
+        for mon in "${MONITORS[@]}"; do
+            if [ "$mon" != "$PRIMARY" ]; then
+                SECONDARY="$mon"
+                break
+            fi
+        done
+    else
+        PRIMARY="${MONITORS[0]}"
+        SECONDARY="${MONITORS[1]}"
     fi
 
-    bspc monitor "$PRIMARY"    -d 1 2 3 4 5
-    bspc monitor "$SECONDARY"  -d 6 7
+    bspc monitor "$PRIMARY"   -d 1 2 3
+    bspc monitor "$SECONDARY" -d 4 5 6
 
 else
-    # Более 2 мониторов — назначаем по 3 стола на каждый (можно настроить)
     DESKTOP_NAMES=(1 2 3 4 5 6 7 8 9 0)
     IDX=0
     for MON in "${MONITORS[@]}"; do
-        # Берём до 3 столов на монитор (или сколько осталось)
         NAMES=()
         for i in {0..2}; do
             if [ $((IDX + i)) -lt ${#DESKTOP_NAMES[@]} ]; then
@@ -69,8 +61,6 @@ else
 fi
 
 
-# --- Запуск сопутствующих демонов ---
-# Убедитесь, что они не запущены дважды
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x dunst > /dev/null || dunst &
@@ -81,10 +71,8 @@ if ! pgrep -x polkit-gnome-authentication-agent-1 > /dev/null; then
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi
 
-# Обои
 feh --bg-scale ~/Pictures/wallpaper.jpg &
 
-# Панель (polybar)
 ~/.config/polybar/launch.sh &
 
 pkill battery-alert; ~/bin/battery-alert &
