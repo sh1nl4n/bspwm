@@ -1,34 +1,8 @@
-from packages import Packages
-from src.package_manager import PackageManager
+
 from src.dotfile_manager import DotfileManager
 from pathlib import Path
 import subprocess
 import os
-
-
-
-# === 1. Установка пакетов ===
-pm = PackageManager(aur_helper="yay")
-
-to_install = (
-    Packages.base +
-    Packages.desktop +
-    Packages.session +
-    Packages.network +
-    Packages.sound +
-    Packages.bluetooth +
-    Packages.fonts +
-    Packages.system +
-    Packages.storage +
-    Packages.apps +
-    Packages.games +
-    Packages.gnome_essential_for_wm
-)
-
-print("📥 Установка пакетов...")
-pm.install_packages(to_install)
-
-
 
 # === 2. Развёртывание конфигов ===
 print("\n⚙️  Развёртывание конфигурационных файлов...")
@@ -36,46 +10,46 @@ dm = DotfileManager(dotfiles_dir="./dotfiles")  # или "~/dotfiles", если 
 
 CONFIG_MAP = {
      # bspwm + sxhkd
-    "bspwm/bspwmrc": "~/.config/bspwm/bspwmrc",
-    "sxhkd/sxhkdrc": "~/.config/sxhkd/sxhkdrc",
+    "bspwm/bspwmrc": "/home/snake/.config/bspwm/bspwmrc",
+    "sxhkd/sxhkdrc": "/home/snake/.config/sxhkd/sxhkdrc",
 
 
     # Панель и уведомления
-    "polybar/": "~/.config/polybar/",
-    "dunst/dunstrc": "~/.config/dunst/dunstrc",
-    "picom/picom.conf": "~/.config/picom/picom.conf",
+    "polybar/": "/home/snake/.config/polybar/",
+    "dunst/dunstrc": "/home/snake/.config/dunst/dunstrc",
+    "picom/picom.conf": "/home/snake/.config/picom/picom.conf",
 
 
     # Rofi
-    "rofi/": "~/.config/rofi/",
+    "rofi/": "/home/snake/.config/rofi/",
 
 
     # X11
-    "x11/xinitrc": "~/.xinitrc",
+    "x11/xinitrc": "/home/snake/.xinitrc",
 
 
     # GTK / темы
-    "gtk-3.0/settings.ini": "~/.config/gtk-3.0/settings.ini",
+    "gtk-3.0/settings.ini": "/home/snake/.config/gtk-3.0/settings.ini",
 
 
     # Betterlockscreen
-    "betterlockscreen/betterlockscreenrc": "~/.config/betterlockscreen/betterlockscreenrc",
+    "betterlockscreen/betterlockscreenrc": "/home/snake/.config/betterlockscreen/betterlockscreenrc",
 
 
     # Themes
-    "fonts/": "~/.local/share/fonts/local/",
-    "themes/": "~/.themes/",
-    "icons/": "~/.icons/",
+    "fonts/": "/home/snake/.local/share/fonts/local/",
+    "themes/": "/home/snake/.themes/",
+    "icons/": "/home/snake/.icons/",
 
     # Other
-    "pictures/": "~/Pictures/",
-    "bin/": "~/bin/",
-    "autorandr": "~/.config/autorandr",
+    "pictures/": "/home/snake/Pictures/",
+    "bin/": "/home/snake/bin/",
+    "autorandr": "/home/snake/.config/autorandr",
     "etc/logind.conf": "/etc/systemd/logind.conf",
     "x11/00-keyboard.conf": "/etc/X11/xorg.conf.d/00-keyboard.conf",
     "x11/50-touchpad.conf": "/etc/X11/xorg.conf.d/50-touchpad.conf",
-    "micro/": "~/.config/micro/",
-    "alacritty/": "~/.config/alacritty/"
+    "micro/": "/home/snake/.config/micro/",
+    "alacritty/": "/home/snake/.config/alacritty/"
 }
 
 dm.deploy_configs(CONFIG_MAP)
@@ -88,19 +62,19 @@ print("\n🔧 Пост-установка...")
 subprocess.run(["sudo", "usermod", "-aG", "docker", "$USER"], stdout=subprocess.DEVNULL, check=True)
 
 executables = [
-    "~/.config/bspwm/bspwmrc",
-    "~/.config/sxhkd/sxhkdrc",
-    "~/.config/polybar/launch.sh",
-    "~/.config/autorandr/postswitch",
-    "~/.xinitrc",
-    "~/bin/lock_screen.sh",
-    "~/bin/color_pick.sh",
+    "/home/snake/.config/bspwm/bspwmrc",
+    "/home/snake/.config/sxhkd/sxhkdrc",
+    "/home/snake/.config/polybar/launch.sh",
+    "/home/snake/.config/autorandr/postswitch",
+    "/home/snake/.xinitrc",
+    "/home/snake/bin/lock_screen.sh",
+    "/home/snake/bin/color_pick.sh",
 ]
 
 for path_str in executables:
     path = Path(os.path.expanduser(path_str))
     if path.exists():
-        path.chmod(0o755)
+        path.chmod(0o777)
         print(f"✅ Сделан исполняемым: {path}")
 
 # Инициализация betterlockscreen (если используется)

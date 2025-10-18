@@ -25,7 +25,8 @@ class Packages:
 		"rofi-calc",						# Калькулятор внутри rofi
 		"cliphist",							# История буфера обмена
 		"xclip",								# Классический инструмент для работы с буфером в X11
-		"lxappearance"
+		"lxappearance",
+		"autorandr"
 	]
 
 
@@ -171,8 +172,8 @@ class Packages:
 		"docker-compose",       # Управление многоконтейнерными приложениями
 		"meld",                 # Визуальное сравнение файлов
 		"octopi",               # GUI для pacman (менеджер пакетов)
-		"paru-bin",                 # AUR-хелпер (альтернатива yay)
-		"yay-bin",              # Ещё один популярный AUR-хелпер
+		# "paru-bin",                 # AUR-хелпер (альтернатива yay)
+		# "yay-bin",              # Ещё один популярный AUR-хелпер
 		"nodejs",
 		"npm",
 		"gpick"
