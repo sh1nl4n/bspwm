@@ -65,6 +65,8 @@ cp -r ./dotfiles/pictures/* ~/Pictures/
 
 copy_with_backup ./dotfiles/x11/xinitrc ~/.xinitrc
 
+copy_with_backup ./dotfiles/x11/xsettingsd ~/.xsettingsd
+
 copy_with_backup ./dotfiles/rofi/ ~/.config/rofi
 
 copy_with_backup ./dotfiles/polybar/ ~/.config/polybar
@@ -97,5 +99,6 @@ chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/.config/betterlockscreen/betterlockscreenrc
 chmod +x ~/.xinitrc
+chmod +x ~/.xsettingsd
 chmod +x ~/bin/*
 
