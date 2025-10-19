@@ -1,6 +1,6 @@
 [font]
 builtin_box_drawing = true
-size = 10.0
+size = 11.0
 
 [font.bold]
 style = "Bold"
@@ -12,7 +12,7 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
-family = "IBM Plex Mono"
+family = "JetBrainsMono"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -38,6 +38,7 @@ program = "/usr/bin/fish"
 
 [window]
 dynamic_title = true
+padding = { x = 30, y = 30 }
 opacity = 1
 title = "Alacritty"
 

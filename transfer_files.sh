@@ -56,6 +56,8 @@ copy_with_backup ./dotfiles/picom ~/.config/picom
 
 copy_with_backup ./dotfiles/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 
+copy_with_backup ./dotfiles/gtk-4.0/settings.ini ~/.config/gtk-4.0/settings.ini
+
 copy_with_backup ./dotfiles/betterlockscreen ~/.config/betterlockscreen
 
 ensure_dir ~/Pictures/
@@ -67,7 +69,6 @@ copy_with_backup ./dotfiles/rofi/ ~/.config/rofi
 
 copy_with_backup ./dotfiles/polybar/ ~/.config/polybar
 
-copy_with_backup ./dotfiles/autorandr/ ~/.config/autorandr
 
 copy_with_backup ./dotfiles/micro/ ~/.config/micro
 
@@ -94,7 +95,7 @@ sudo cp ./dotfiles/x11/50-touchpad.conf /etc/X11/xorg.conf.d/50-touchpad.conf
 chmod +x ~/.config/bspwm/bspwmrc
 chmod +x ~/.config/sxhkd/sxhkdrc
 chmod +x ~/.config/polybar/launch.sh
-chmod +x ~/.config/autorandr/postswitch
+chmod +x ~/.config/betterlockscreen/betterlockscreenrc
 chmod +x ~/.xinitrc
 chmod +x ~/bin/*
 

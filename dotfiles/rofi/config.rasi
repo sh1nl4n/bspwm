@@ -16,18 +16,18 @@ configuration {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	spacing: 0;
+	spacing: 0;	
 }
 
 window {
-	width: 400px;
-	height: 500px;
+	width: 700px;
+	height: 350px;
 	border-radius: 0;
 	border: 0;
 	padding: 10;
 	background-color: @bg;
-	x-offset:   -750px;
-	y-offset:   -240px;
+	x-offset:   0px;        
+	y-offset:   0px;
 }
 
 mainbox {
@@ -40,7 +40,7 @@ listview {
 	scrollbar: false;
 	padding: 2 0;
 	background-color: @bg;
-	columns: 1;
+	columns: 2;
 	lines: 7;
 	margin: 8 0 0 0;
 }
@@ -106,15 +106,15 @@ element.normal.active {
 	text-color: @fg;
 }
 element.selected.normal {
-	background-color: @green;
+	background-color: @fg;
 	text-color: @bg;
 }
 element.selected.urgent {
-	background-color: @green;
+	background-color: @fg;
 	text-color: @bg;
 }
 element.selected.active {
-	background-color: @blue;
+	background-color: @fg;
 	text-color: @bg;
 }
 element.alternate.normal {

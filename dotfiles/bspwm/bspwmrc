@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Настройки X11
+xset s 300
+xset dpms 600
+
+# Запуск фоновых служб
+sxhkd &
+xss-lock -- betterlockscreen -l &
+
 # --- Настройки bspwm ---
 bspc config border_width         1
 bspc config window_gap          6
@@ -40,8 +48,8 @@ elif [ "$NUM_MONITORS" -eq 2 ]; then
         SECONDARY="${MONITORS[1]}"
     fi
 
-    bspc monitor "$PRIMARY"   -d 1 2 3
-    bspc monitor "$SECONDARY" -d 4 5 6
+    bspc monitor "$PRIMARY"   -d 1 2 3 
+    bspc monitor "$SECONDARY" -d 4 5 6 
 
 else
     DESKTOP_NAMES=(1 2 3 4 5 6 7 8 9 0)
@@ -67,9 +75,12 @@ pgrep -x dunst > /dev/null || dunst &
 pgrep -x nm-applet > /dev/null || nm-applet --indicator &
 pgrep -x volumeicon > /dev/null || volumeicon &
 pgrep -x flameshot > /dev/null || flameshot &
+pkill battery-alert; ~/bin/battery-alert &
 if ! pgrep -x polkit-gnome-authentication-agent-1 > /dev/null; then
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi
+autorandr -c &
+xsetroot -cursor_name left_ptr &
 
 feh --bg-scale ~/Pictures/wallpaper.jpg &
 

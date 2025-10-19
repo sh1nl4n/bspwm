@@ -5,7 +5,7 @@ configuration {
 	modi: "drun";
 }
 
-@import "~/.config/bspwm/themes/bspwm_otto/rofi/colors.rasi"
+@import "~/.config/rofi/colors.rasi"
 
 * {
 	font: "JetbrainsMono 10";
@@ -16,18 +16,18 @@ configuration {
 	border: 0;
 	margin: 0;
 	padding: 0;
-	spacing: 0;
+	spacing: 0;	
 }
 
 window {
-	width: 170px;
-	height: 150px;
+	width: 500px;
+	height: 300px;
 	border-radius: 0;
 	border: 0;
 	padding: 10;
 	background-color: @bg;
-	x-offset:   865px;
-	y-offset:   -415px;
+	x-offset:   0px;        
+	y-offset:   0px;
 }
 
 mainbox {
@@ -108,15 +108,15 @@ element.normal.active {
 }
 element.selected.normal {
 	background-color: @gr;
-	text-color: @green;
+	text-color: @fg;
 }
 element.selected.urgent {
 	background-color: @gr;
-	text-color: @green;
+	text-color: @fg;
 }
 element.selected.active {
 	background-color: @gr;
-	text-color: @green;
+	text-color: @fg;
 }
 element.alternate.normal {
 	background-color: @bg;
