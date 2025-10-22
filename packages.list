@@ -10,7 +10,6 @@ xorg-xkill
 libinput-gestures
 xf86-input-libinput
 alacritty
-xsettingsd
 
 
 # Desktop
@@ -98,8 +97,7 @@ material-icon-theme-git
 
 
 # System
-htop
-btop
+glances
 nvtop
 glances
 duf
@@ -162,6 +160,13 @@ octopi
 nodejs
 npm
 gpick
+totem
+unarchiver
+zip
+unzip
+uv
+file-roller
+nautilus
 
 
 # Games
@@ -225,3 +230,7 @@ xdg-desktop-portal-gnome
 gvfs
 upower
 polkit-gnome
+gnome-calculator
+gnome-calendar
+gnome-clocks
+gnome-font-viewer
