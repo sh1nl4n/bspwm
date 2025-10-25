@@ -1,1 +1,1 @@
-betterlockscreen -l
+betterlockscreen -l --show-layout

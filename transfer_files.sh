@@ -29,6 +29,9 @@ PACKAGES=(
     sxhkd
     themes
     xinit
+    yazi
+    nekoray
+    vim
 )
 
 echo "🔗 Устанавливаю dotfiles через stow..."
@@ -36,7 +39,7 @@ echo "🔗 Устанавливаю dotfiles через stow..."
 for pkg in "${PACKAGES[@]}"; do
     if [[ -d "$pkg" ]]; then
         echo "📦 $pkg"
-        stow --verbose=1 "$pkg"
+        stow --dotfiles -v -t ~ "$pkg"
     else
         echo "⚠️  Пропущен: $pkg (папка не найдена)"
     fi

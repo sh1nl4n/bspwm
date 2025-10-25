@@ -1,11 +1,16 @@
-exec sxhkd &
-exec bspwm
+#!/bin/sh
 
-# Настройки энергосбережения и блокировки
-xset s 300          # Экран "засыпает" через 5 минут (активирует screensaver)
-xset dpms 600       # DPMS: выключить дисплей через 10 минут
+# Настройки X11
+xset s 300
+xset dpms 600
 
-# Запуск xss-lock (реагирует на xset s)
-pgrep -x xss-lock > /dev/null || xss-lock -l -- betterlockscreen -l &
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# Запуск демонов и утилит (в фоне)
+xsettingsd &    
+sxhkd &
+xss-lock -- betterlockscreen -l --show-layout &
+autorandr -c &
+
+# Запуск основной сессии через dbus-launch
 exec dbus-launch --exit-with-session bspwm
