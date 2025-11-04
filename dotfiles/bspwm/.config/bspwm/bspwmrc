@@ -10,7 +10,7 @@ xset dpms 600
 
 # Запуск фоновых служб
 sxhkd &
-xss-lock -- betterlockscreen -l &
+xss-lock -- betterlockscreen -l --show-layout &
 
 # --- Настройки bspwm ---
 bspc config border_width         1

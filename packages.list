@@ -25,6 +25,8 @@ lxappearance
 autorandr
 arandr
 playerctl
+mpv
+youtube-dl
 
 
 # Sessions
@@ -167,7 +169,7 @@ zip
 unzip
 uv
 file-roller
-nautilus
+thunar
 
 
 # Games

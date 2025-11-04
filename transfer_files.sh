@@ -32,6 +32,7 @@ PACKAGES=(
     yazi
     nekoray
     vim
+	kitty
 )
 
 echo "🔗 Устанавливаю dotfiles через stow..."

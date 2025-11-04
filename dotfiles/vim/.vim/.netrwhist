@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/snake/Documents/linux/python-installer-bspwm/dotfiles/themes'
+let g:netrw_dirhist_8='/home/snake/.config/kitty'
+let g:netrw_dirhist_7='/home/snake/Documents/linux/python-installer-bspwm/dotfiles/bspwm/.config/bspwm'
+let g:netrw_dirhist_6='/home/snake/Documents/linux/python-installer-bspwm/dotfiles/bspwm/.config'
+let g:netrw_dirhist_5='/home/snake/Documents/linux/python-installer-bspwm/dotfiles/bspwm'
+let g:netrw_dirhist_4='/home/snake/Documents/linux/python-installer-bspwm/dotfiles'
+let g:netrw_dirhist_3='/home/snake/Documents/linux/python-installer-bspwm'
+let g:netrw_dirhist_2='/home/snake/Documents/linux'
+let g:netrw_dirhist_1='/home/snake/Documents/lessons'

@@ -5,16 +5,33 @@ super + d
 	rofi -show drun -theme .config/rofi/config.rasi -show-icons
 
 super + n
-	nautilus
+	thunar
 
 @Print
 	flameshot gui
+
+ctrl + super + s
+	flameshot gui
+
+super + u
+	bspc rule -a \* -o state=floating && kitty -e $SHELL -c "figlet update... && sudo pacman -Syu"
 
 super + l
 	~/bin/lock_screen.sh
 
 super + c
 	~/bin/color_pick.sh
+
+# Show clipmenu
+alt + v
+    CM_LAUNCHER=rofi clipmenu \
+        -location 1 \
+        -m -3 \
+        -no-show-icons \
+        -theme-str '* \{ font: 10px; \}' \
+        -theme-str 'listview \{ spacing: 0; \}' \
+        -theme-str 'window \{ width: 20em; \}'
+
 
 #ПЕРЕЗАГРУЗИТЬ КОНФИГ SXHKD
 super + Escape
@@ -31,6 +48,9 @@ super + ctrl + r
 #ВЫКЛЮЧЕНИЕ
 super + ctrl + p
         poweroff
+
+super + p
+	~/bin/powermenu.sh
 
 #ПОМЕНЯТЬ СТАТУС ОКНА НА /ТАЙЛОВОЕ/ПСЕВДО ТАЙЛОВОЕ/ПЛАВАЮЩЕЕ/ПОЛНОЭКРАННОЕ
 super + {t,shift + t,s,f}
