@@ -33,6 +33,7 @@ PACKAGES=(
     nekoray
     vim
 	kitty
+	ngrok
 )
 
 echo "🔗 Устанавливаю dotfiles через stow..."
