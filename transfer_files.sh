@@ -34,6 +34,8 @@ PACKAGES=(
     vim
 	kitty
 	ngrok
+	nu
+	mimeapps
 )
 
 echo "🔗 Устанавливаю dotfiles через stow..."

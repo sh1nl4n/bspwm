@@ -7,9 +7,11 @@ xorg-xrandr
 xorg-xinput
 xorg-xdpyinfo
 xorg-xkill
+xorg-xwininfo
 libinput-gestures
 xf86-input-libinput
 alacritty
+nushell
 
 
 # Desktop
@@ -27,6 +29,8 @@ arandr
 playerctl
 mpv
 youtube-dl
+git
+lazygit
 
 
 # Sessions

@@ -1,6 +1,6 @@
 [font]
 builtin_box_drawing = true
-size = 10.0
+size = 11.0
 
 [font.bold]
 style = "Bold"
@@ -33,8 +33,6 @@ multiplier = 6
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[terminal.shell]
-program = "/usr/bin/fish"
 
 [window]
 dynamic_title = true

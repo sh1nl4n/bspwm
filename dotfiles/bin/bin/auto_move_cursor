@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Starting..."
+
+while true; do
+  xdotool mousemove_relative --polar 0 1
+  sleep 0.1
+  xdotool mousemove_relative --polar 180 1
+  sleep 20 
+done
