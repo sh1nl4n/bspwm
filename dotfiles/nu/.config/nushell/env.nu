@@ -1,5 +1,9 @@
-def yy [msg: string] {
-  yazi $msg
+def yy [msg?: string] {
+  if $msg == null {
+    yazi
+  } else {
+    yazi $msg
+  }
 }
 
 def c [] {
