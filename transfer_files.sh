@@ -34,7 +34,8 @@ PACKAGES=(
     vim
 	kitty
 	ngrok
-	nu
+	#nu
+	fish
 	mimeapps
 )
 
